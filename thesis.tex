@@ -1,0 +1,100 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[
+12pt, % Document font size
+onside] % Set the document to one sided instead of two sided
+{book} % Class file specifying document structure
+
+\usepackage{graphicx} % Images package
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry} % Layout package and settings
+\usepackage[backend=biber, style=apa, autocite=inline]{biblatex} % Bibliography package
+\usepackage{hyperref} % Package to create hyperlinks for all cross-referenced elements
+\usepackage{xcolor} % Pckage to create define colors
+\usepackage{sectsty} % Package to change document styling
+% ---- Packages for pseudocode ----
+\usepackage{listings} 
+\usepackage[ruled,vlined, linesnumbered, algochapter]{algorithm2e}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+% ---------------------------------------
+\usepackage{array} % Package to write arrays
+\usepackage{subcaption} % Package to create subcaptions in figures
+\usepackage{physics} % Package to write math formulas
+
+% Define colors you are planning  to use in rbg format
+\definecolor{code}{gray}{0.95}
+\definecolor{theme}{rgb}{0.09,0.43,0.37}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+
+% Pseudocode styling
+\lstdefinestyle{pseudocode}{
+	numbers=left,
+	backgroundcolor=\color{code},
+	tabsize = 2,
+	numberstyle=\color{gray}
+}
+
+% Set font colors using sectsty package
+\allsectionsfont{\color{theme}}
+
+% Configure links behaviour within the document
+\hypersetup{
+    colorlinks=true,
+    citecolor=theme,
+    filecolor=black,
+    linkcolor=theme,
+    urlcolor= airforceblue,
+}
+
+% Biblatex configuration
+\DeclareLanguageMapping{english}{english-apa}
+
+% Add bibliography file here
+\addbibresource{bibliography.bib}
+
+% Add images folder here
+\graphicspath{ {images/} }
+
+% 
+\counterwithin{figure}{section}
+
+\lstset{style=pseudocode}
+\newcommand\themebold[1]{\textcolor{theme}{\textbf{#1}}}
+% Your thesis title
+\title{Clustering algorithms in the touristic sector}
+% Your name here
+\author{Argyro Sioziou}
+% Date here
+\date{20 February 2020}
+
+%----------------------------------------------------------------------------------------
+%	                            DOCUMENT STARTS HERE
+%----------------------------------------------------------------------------------------
+\begin{document}
+% Insert titlepage 
+\input{titlepage}
+% Insert abstract
+\input{abstract}
+% Insert table of contents
+\tableofcontents
+
+% ---- Insert chapter titles and text ----
+\chapter{INTRODUCTION}
+\input{chapters/introduction}
+
+\chapter{BACKGROUND}
+\input{chapters/background}
+
+\chapter{CASE STUDY: CLUSTER ANALYSIS ON TRAVEL AGENCY'S DATA}
+\input{chapters/case}
+
+\chapter{CONCLUSIONS}
+\input{chapters/conclusions}
+% ------------------------------------------
+
+% Prints bibliography page
+\printbibliography
+% Include bibliography to contents
+\addcontentsline{toc}{section}{Bibliography}
+\end{document}
